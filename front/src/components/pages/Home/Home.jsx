@@ -3,7 +3,7 @@
  const Home=()=>{
     return(
         <>
-           <div>Home Page</div>
+           <div>Home Page1</div>
         </>
     )
 }

@@ -9,7 +9,7 @@ import hamburgerImage from '../../../images/header/hamburger.svg'
         <>
             <header className={styles.header}>
             <button type='button'>
-                <img src={userImage} alt="Auth" />
+                <img src={userImage} alt="Auth1" />
             </button>
             <button type='button'>
                 <img src={hamburgerImage} alt="Hamburger" />
