@@ -2,7 +2,8 @@ import React from 'react'
 import styles from './Header.module.scss'
 
 import userImage from '../../../images/header/user.svg'
-import hamburgerImage from '../../../images/header/hamburger.svg'
+
+import Hamburger from './Hamburger.jsx/Hamburger'
 
  const Header=()=>{
     return(
@@ -11,9 +12,7 @@ import hamburgerImage from '../../../images/header/hamburger.svg'
             <button type='button'>
                 <img src={userImage} alt="Auth1" />
             </button>
-            <button type='button'>
-                <img src={hamburgerImage} alt="Hamburger" />
-            </button>
+        <Hamburger/>
             </header>
         </>
     )

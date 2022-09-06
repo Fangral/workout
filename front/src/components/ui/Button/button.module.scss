@@ -1,23 +1,26 @@
 @import '../../../scss/variables';
 $accent-04:rgba($accent,0.4);
 
-button{
+.button{
     font-size: 18px;
     border: none;
     outline: none;
     border-radius: 10px;
     padding: 11px 46px;
-    transition: background-color .4s ease-in-out;
+    transition: background-color .15s ease;
     background-color:$accent-04;
+    cursor: pointer;
+    color: #FFF;
     &:hover{
         background-color:rgba($accent,0.7);
     }
     &.main{
-        font-size: 24px;
-        background-color: rgba(255,255,255,.2);
-        padding: 19px 49px;
+        background-color: rgba(255,255,255,.25);
         &:hover{
             background-color:$accent-04;
         }
     }
+}
+.wrapper{
+    text-align: center;
 }
