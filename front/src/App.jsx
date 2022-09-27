@@ -1,7 +1,7 @@
 import React from 'react'
 import Home from './components/pages/Home/Home.jsx'
 //import Layout from './components/common/Layout.jsx'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route,} from 'react-router-dom'
 import NewWorkout from './components/pages/NewWorkout/NewWorkout.jsx'
 
  const App = () => {

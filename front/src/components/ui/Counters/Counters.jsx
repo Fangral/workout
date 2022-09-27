@@ -12,8 +12,8 @@ const Counters = () => {
     //minutes, kgs, workouts
   return (
     <div className={styles.wrapper}>
-        {Object.entries(counters).map(item=>(
-        <div className={styles.count}>
+        {Object.entries(counters).map((item,key)=>(
+        <div key={key} className={styles.count}>
             <div className={styles.heading}>{item[0]}</div>
             <div className={styles.number}>{item[1]}</div>
         </div>
