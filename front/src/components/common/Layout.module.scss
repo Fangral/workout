@@ -1,10 +1,11 @@
+@import '../../scss/variables';
 .wrapper{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 
-    padding: 30px;
-    height: 910px;
+    padding: 25px;
+    height: 100%;
     margin: 0 auto;
     
     max-width: 560px;
@@ -12,4 +13,17 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
+    &.otherPage{
+        height: 280px;
+        border-radius: 0 0 20px 20px;
+        box-shadow: $bx-accent;
+    }
+}
+.heading{
+    text-transform: uppercase;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+
 }

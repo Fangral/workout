@@ -180,3 +180,31 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
 	-moz-appearance: textfield;
 }
+
+.select2-selection{
+	&__control{
+	margin-bottom: 2rem;
+	border-radius: 10px!important;
+	min-height: 48px!important;
+	color:$white;
+	}
+}
+.select2-selection__single-value{
+	color: #946e86 !important
+}
+.select2-selection__option--is-selected{
+	background-color: darken($purple,8%) !important;
+	color: $white !important;
+}
+.select2-selection__control--is-focused{
+	border-color: transparent !important;
+	box-shadow: 0 0 0 1px rgba($accent, 0.3) !important;
+}
+.dark-link{
+	text-align: right;
+	display: block;
+	margin-bottom: .5rem;
+	text-decoration: none;
+	color:$purple;
+	transition: color .3s ease;
+}
