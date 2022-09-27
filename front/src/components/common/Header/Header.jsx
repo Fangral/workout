@@ -16,7 +16,7 @@ const loacation=useLocation();
                     loacation.pathname!=='/'?(  <button type='button' onClick={()=>navigate(-1)}>
                     <img src={arrowImage} alt="Auth1" />
                 </button>)
-                :(   <button type='button'>
+                :(   <button type='button' onClick={()=>navigate('/auth')}>
                 <img src={userImage} alt="Auth1" />
             </button>)
                 }
