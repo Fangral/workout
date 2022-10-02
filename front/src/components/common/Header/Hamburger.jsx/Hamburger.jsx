@@ -7,20 +7,25 @@ import { menu } from './menuBase'
 import { Link } from 'react-router-dom'
 
 import styles from './Hamburger.module.scss'
+import { useAuth } from '../../../../hooks/useAuth'
+import { useOutsideAlerter } from '../../../../hooks/useOutsideAlerter'
 
 
 const Hamburger = () => {
-    const[show, setShow]=React.useState(false)
+    const { ref, isComponentVisible, setIsComponentVisible } = useOutsideAlerter(false)
+    const { setIsAuth } = useAuth()
 
     const handleLogout=()=>{
-        console.log('logout')
+      localStorage.removeItem('token')
+      setIsAuth(false)
+      setIsComponentVisible(false)
     }
 
 
   return (
-    <div className={styles.wrapper}>
-         <button type='button' className={`${'hamburger hamburger--spin'} ${show ? 'is-active': ''}`}  tabIndex="0" onClick={()=> setShow(!show)} 
-         aria-label="Menu" aria-controls="navigation" aria-expanded={!show}>
+    <div ref={ref}  className={`${styles.wrapper}`} >
+         <div role='button'  className={`${'hamburger hamburger--spin'} ${isComponentVisible ? 'is-active': ''}`}  tabIndex="0" onClick={()=> {setIsComponentVisible(!isComponentVisible)}} 
+         aria-label="Menu" aria-controls="navigation" aria-expanded={!isComponentVisible}>
     <div className="hamburger-box">
       <div className="hamburger-inner"></div>
     </div>
@@ -28,9 +33,9 @@ const Hamburger = () => {
 
     
     {/* <img src={show ? hamburgerCloseImage : hamburgerImage} alt="Hamburger" /> */}
-  </button>
+  </div>
   
-        <nav id="navigation" className={`${styles.menu} ${show ? styles.show: ''}`}>
+        <nav id="navigation" className={`${styles.menu} ${isComponentVisible ? styles.show: ''}`}>
             <ul>
                 {menu.map((item,key)=>
                 <li key={key}><Link to={item.link}>{item.title}</Link></li>

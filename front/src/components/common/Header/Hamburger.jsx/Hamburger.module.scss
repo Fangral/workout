@@ -3,19 +3,11 @@
 
 
 .wrapper {
-    position: relative;
-    button{
-        //background-color: transparent;
-        //border: none;
-       // outline: none;
+        position: relative;
         cursor: pointer;
-        >svg{
-            transition: .4s ease;
-        }
-    }
-    .menu{
+        .menu{
+        user-select: none;
         position: absolute;
-        top: calc(100%);
         right: -146px;
         background-color: #fff;
         padding: 10px 12px;
@@ -23,13 +15,13 @@
         box-shadow: $bx-16;
         border-radius: 10px 0px 10px 10px;
         color: #000;
-        max-width: 116px;
+        width: 100px;
         display: none;
-        animation: slide .5s ease;
-       //transition: .4s ease;
+     
+       animation: opacity .4s ease;
         &.show{
            display: block;
-            right: -30px;
+            right: 0px;
         }
         > ul{
             list-style: none;
@@ -44,5 +36,5 @@
             }
         }
        
-    }
+        }
 }
