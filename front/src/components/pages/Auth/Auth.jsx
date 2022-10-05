@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../hooks/useAuth'
 
 
+
 function Auth() {
 const [email, setEmail]=React.useState('')
 const [password, setPassword]=React.useState('')
@@ -21,6 +22,15 @@ const [type, setType]=React.useState('auth') //auth||reg
 
 const navigate=useNavigate();
 const {setIsAuth}=useAuth();
+
+const successLogin=(token)=>{
+  localStorage.setItem('token',token)
+  setEmail('');
+  setPassword('');
+  setIsAuth(true);
+  setTimeout(()=>{navigate('/')},3000);
+}
+
 const {
   mutate: register, 
   isLoading, 
@@ -35,19 +45,34 @@ $api({
 }),
 {
   onSuccess(data){
-    localStorage.setItem('token',data.token)
-    setEmail('');
-    setPassword('');
-    setIsAuth(true);
-    setTimeout(()=>{navigate('/')},3000);
+    successLogin(data.token)
   },
 }
 )
-// React context auth
+
+const {
+  mutate: auth, 
+  isLoading: isLoadingAuth, 
+  error:errorAuth,
+  isSuccess:successAuth 
+} = useMutation('Registration',()=>
+$api({
+  url:'/users/login', 
+  type:"POST", 
+  body: {email,password}, 
+  auth:false,
+}),
+{
+  onSuccess(data){
+    successLogin(data.token)
+  },
+}
+)
+
 const handleSubmit=(e)=>{
   e.preventDefault()
   type==='auth'?
-    console.log('auth')
+    auth()
     : register()
 }
 
@@ -57,8 +82,10 @@ const handleSubmit=(e)=>{
 
       <div className='wrapper-inner-page'>
         {error && <Alert type='error' text={error} />}
+        {errorAuth && <Alert type='error' text={errorAuth} />}
         {isSuccess && <Alert type='isSuccess' text='Успешная регистрация' />}
-        {isLoading && <Loader/>}
+        {successAuth && <Alert type='isSuccess' text='Успешная авторизация' />}
+        {(isLoading || isLoadingAuth) && <Loader/>}
         <form onSubmit={handleSubmit}>
           <Field type='email' placeholder="Enter email" value={email} onChange={e=>setEmail(e.target.value)} required/>
           <Field type='password' placeholder="Enter password" value={password} onChange={({target:{value}})=>setPassword(value)} required/>
