@@ -4,6 +4,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    &.profile{
+        >.count .heading{
+            color: #312f2f;
+
+    }
+    }
     >.count{
         width: 30%;
         font-size: 24px;

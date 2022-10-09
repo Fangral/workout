@@ -1,0 +1,21 @@
+@import '../../../scss/variables';
+
+
+.before_after{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  >div{
+    width: 45%;
+  }
+  img{
+    border-radius: 10px;
+  }
+  .heading{
+    margin-bottom: .5rem;
+  }
+}
+.center{
+  text-align: center;
+  margin: 6px 0 18px;
+}
