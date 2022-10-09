@@ -29,7 +29,6 @@ $api({
 },
 )
 
-console.log(data)
 
 const {
   mutate, 
@@ -40,7 +39,7 @@ const {
 $api({
   url:'/workouts', 
   type:"POST", 
-  body: {name, exercisesIds:exIds},
+  body: {name, exerciseIds:exIds},
 }),
 {
   onSuccess(){
@@ -73,15 +72,12 @@ mutate({
           classNamePrefix='select2-selection'
           placeholder='Status...'
           title='Exercises'
-          options={[
+          options={
             data.map(ex=>({
-
                 value: ex._id,
                 label: ex.name
-
-
             }))
-          ]}
+          }
           value={exercisesCurrent}
           onChange={setExercisesCurent}
           isMulti={true}
