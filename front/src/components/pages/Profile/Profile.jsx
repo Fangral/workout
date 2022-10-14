@@ -15,17 +15,15 @@ import styles from './Profile.module.scss'
 
 const Profile = () => {
   
-  const {refetch,data,isSuccess}=useQuery('Home page Counters',()=>
+  const {data,isSuccess}=useQuery('Home page Counters',()=>
   $api({
       url:'/users/profile',
   }),
-  {
-      refetchOnWindowFocus:false,
-  })
+)
 
   return (
     <>
-    <div className={`${stylesLayout.wrapper} ${stylesLayout.otherPage}`} style={{ backgroundImage:`url(${bgImage})`}}>
+    <div className={`${stylesLayout.wrapper} ${stylesLayout.otherPage}`} style={{ backgroundImage:`url(${bgImage})`, height:356}}>
         <Header/>
     <div className={styles.center}>
       <img src={userImage} alt="Profile" height='56px' />
