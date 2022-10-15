@@ -13,7 +13,7 @@ import { useOutsideAlerter } from '../../../../hooks/useOutsideAlerter'
 
 const Hamburger = () => {
     const { ref, isComponentVisible, setIsComponentVisible } = useOutsideAlerter(false)
-    const { setIsAuth } = useAuth()
+    const {isAuth, setIsAuth } = useAuth()
 
     const handleLogout=()=>{
       localStorage.removeItem('token')
@@ -21,29 +21,26 @@ const Hamburger = () => {
       setIsComponentVisible(false)
     }
 
-
   return (
+    <>
     <div ref={ref}  className={`${styles.wrapper}`} >
-         <div role='button'  className={`${'hamburger hamburger--spin'} ${isComponentVisible ? 'is-active': ''}`}  tabIndex="0" onClick={()=> {setIsComponentVisible(!isComponentVisible)}} 
+      <div role='button'  className={`${'hamburger hamburger--spin'} ${isComponentVisible ? 'is-active': ''}`}  tabIndex="0" onClick={()=> {setIsComponentVisible(!isComponentVisible)}} 
          aria-label="Menu" aria-controls="navigation" aria-expanded={!isComponentVisible}>
-    <div className="hamburger-box">
-      <div className="hamburger-inner"></div>
+        <div className="hamburger-box">
+          <div className="hamburger-inner"></div>
+        </div>
+      </div>
+      <nav id="navigation" className={`${styles.menu} ${isComponentVisible ? styles.show: ''}`}>
+        <ul>
+          {menu.map((item,key)=>
+          <li key={key}><Link to={item.link}>{item.title}</Link></li>
+          )}
+          <li><button onClick={handleLogout}>Logout</button></li>
+        </ul>
+      </nav>
     </div>
 
-
-    
-    {/* <img src={show ? hamburgerCloseImage : hamburgerImage} alt="Hamburger" /> */}
-  </div>
-  
-        <nav id="navigation" className={`${styles.menu} ${isComponentVisible ? styles.show: ''}`}>
-            <ul>
-                {menu.map((item,key)=>
-                <li key={key}><Link to={item.link}>{item.title}</Link></li>
-                )}
-                <li><button onClick={handleLogout}>Logout</button></li>
-            </ul>
-        </nav>
-</div>
+    </>
   )
 }
 

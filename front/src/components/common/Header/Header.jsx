@@ -23,7 +23,7 @@ const {isAuth}=useAuth();
                 <img src={isAuth? authImage: userImage} alt="Auth1" height='40px' />
             </button>)
                 }
-        <Hamburger/>
+        {isAuth?<Hamburger/>:''}
             </header>
         </>
     )

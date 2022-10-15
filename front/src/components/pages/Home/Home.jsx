@@ -27,7 +27,7 @@ const Home=()=>{
     return(
 
         <Layout bgImage={bgImage}>
-            <Button text='New' type='main' callback={()=>navigate('/new-workout')}/> 
+            <Button text={!isAuth?'Login/Reg':'New'} type='main' callback={isAuth?()=>navigate('/new-workout'):()=>navigate('/auth')}/> 
             <h1 className={styles.heading}>Exercies for the shoulders</h1>
            {isSuccess && isAuth && <Counters minutes={data.minutes} workouts={data.workouts} kgs={data.kgs}/>}
         </Layout>

@@ -38,7 +38,7 @@ export const getWorkouts = asyncHandler(async (req, res) => {
 })
 
 // @desc    Update workout
-// @route   PUT /api/workouts
+// @route   PUT /api/workout
 // @access  Private
 export const updateWorkout = asyncHandler(async (req, res) => {
 	const { name, exerciseIds, workoutId } = req.body

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import bgImage from '../../../images/workout-bg.jpg'
 
@@ -36,15 +36,15 @@ const SingleWorkout = () => {
         <div className={styles.wrapper}>
           {data.exercises.map((ex,idx)=>{
           return(
-            <>
-            <div className={styles.item} key={idx}>
+            <Fragment key={idx}>
+            <div className={styles.item} >
               <Link to={`/exercises/${ex._id}`}>
               <span>{ex.name}</span>
               <img src={`/uploads/exercises/${ex.imageName}.svg`} alt="icon_exercise" height='34' />
               </Link>
             </div>
             {idx % 2!==0 && <div className={styles.line}></div>}
-            </>
+            </Fragment>
           )
           })}
         </div>
