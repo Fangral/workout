@@ -16,6 +16,7 @@ import { useAuth } from '../../../hooks/useAuth'
 
 
 function Auth() {
+
 const [email, setEmail]=React.useState('')
 const [password, setPassword]=React.useState('')
 const [type, setType]=React.useState('auth') //auth||reg

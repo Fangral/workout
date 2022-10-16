@@ -15,7 +15,7 @@ import { useParams, Link } from 'react-router-dom'
 const SingleWorkout = () => {
   const {id}=useParams()
   
-  const {data,isSuccess,error}=useQuery('get workout',()=>
+  const {data,isSuccess}=useQuery('get workout',()=>
   $api({
       url:`/workouts/${id}`,
   }))
@@ -32,11 +32,11 @@ const SingleWorkout = () => {
         )}
     </div>
     <div className='wrapper-inner-page' style={{paddingLeft:0, paddingRight:0}}>
-        {isSuccess && (
+        {isSuccess ? (
         <div className={styles.wrapper}>
           {data.exercises.map((ex,idx)=>{
           return(
-            <Fragment key={idx}>
+            <Fragment key={`workout ${idx}`}>
             <div className={styles.item} >
               <Link to={`/exercises/${ex._id}`}>
               <span>{ex.name}</span>
@@ -48,9 +48,8 @@ const SingleWorkout = () => {
           )
           })}
         </div>
-        )}
-        {error && <Alert type="warning" text="Exercises not found"/>
-        }
+        ):<Alert type="warning" text="Exercises not found"/>}
+       
     </div>
     </>
   )

@@ -13,10 +13,15 @@ import { Link } from 'react-router-dom'
 
 const ListWorkout = () => {
 
-    const {data,isSuccess,isError}=useQuery('get workout',()=>
+    const {data,isSuccess}=useQuery('get workouts',()=>
     $api({
         url:`/workouts`,
-    }))
+    }),
+    {
+        refetchOnWindowFocus:false,
+    
+    },
+    )
 
 
 
@@ -24,19 +29,19 @@ const ListWorkout = () => {
     <>
     <Layout bgImage={bgImage} heading='Workout List'/>
     <div className='wrapper-inner-page' style={{paddingLeft:0, paddingRight:0}}>
-        {isSuccess && (
+        {isSuccess ? (
         <div className={styles.wrapper}>
           {data.map((wk,idx)=>(
-            <div className={styles.item} key={idx}>
+            <div className={styles.item} key={`workout ${idx}`}>
               <Link to={`/workout/${wk._id}`}>
               <span>{wk.name}</span>
               </Link>
             </div>
 ))}
         </div>
-        )}
-        {isError && <Alert type="warning" text="Workouts not found"/>
+        ):<Alert type="warning" text="Workouts not found"/>
         }
+
     </div>
     </>
   )

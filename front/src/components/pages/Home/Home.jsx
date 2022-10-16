@@ -7,14 +7,14 @@ import {useNavigate} from 'react-router-dom'
 import { useQuery } from "react-query";
 import { $api } from "../../../api/api.js";
 import { useAuth } from "../../../hooks/useAuth.js";
-import { useEffect } from "react";
+
 
 
 const Home=()=>{
     const navigate=useNavigate();
     const {isAuth}=useAuth();
 
-    const {refetch,data,isSuccess}=useQuery('Home page Counters',()=>
+    const {data,isSuccess}=useQuery('Home page Counters',()=>
     $api({
         url:'/users/profile',
     }),

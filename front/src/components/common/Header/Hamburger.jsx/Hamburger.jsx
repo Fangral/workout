@@ -13,7 +13,7 @@ import { useOutsideAlerter } from '../../../../hooks/useOutsideAlerter'
 
 const Hamburger = () => {
     const { ref, isComponentVisible, setIsComponentVisible } = useOutsideAlerter(false)
-    const {isAuth, setIsAuth } = useAuth()
+    const { setIsAuth } = useAuth()
 
     const handleLogout=()=>{
       localStorage.removeItem('token')
