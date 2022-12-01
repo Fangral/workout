@@ -142,7 +142,7 @@ const SingleExercise = () => {
 									key={`Prev ${idx}/${item.prevWeight}`}
 								>
 									<input
-										type='number'
+										type='tel'
 										defaultValue={item.prevWeight}
 										disabled
 									/>
