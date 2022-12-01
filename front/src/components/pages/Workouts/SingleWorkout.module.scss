@@ -20,12 +20,17 @@ time{
     }
   }
 
-  a{
+ a, button{
     color:$white;
     text-decoration: none;
     justify-content: space-between;
     display: flex;
     align-items: center;
+    background-color: transparent;
+    border:none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 20px;
   }
 
   .line{
